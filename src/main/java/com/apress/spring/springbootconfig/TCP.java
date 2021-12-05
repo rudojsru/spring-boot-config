@@ -30,19 +30,17 @@ public class TCP {
         put("CLOSE_WAIT", Map.of("APP_CLOSE", "LAST_ACK"));
 
         put("LAST_ACK", Map.of("RCV_ACK", "CLOSED"));
-    }};
+    }}; // ccc
 
     public static String traverseStates(String[] events) {
-        String state = "CLOSED";                      // initial state, always
-        // Your code here!
-        for (String e : events) {
+        String state = "CLOSED";
 
+        for (String e : events) {
             state = INIT.get(state).get(e);
 
             if (state == null) {
                 return ERROR;
             }
-
         }
         return state;
     }
